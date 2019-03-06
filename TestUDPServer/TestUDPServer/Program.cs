@@ -18,10 +18,8 @@ namespace TestUDPServer
         private static void StartListener()
         {
             UdpClient listener = new UdpClient(listenPort);
+            listener.Client.ReceiveTimeout = 10000;
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
-            var asyncResult = listener.BeginReceive( null, null );
-            var timeToWait = TimeSpan.FromSeconds(10);
-            asyncResult.AsyncWaitHandle.WaitOne( timeToWait );
 
             var diary = new Diary();
             
@@ -33,7 +31,7 @@ namespace TestUDPServer
                     
                     try
                     {
-                        byte[] bytes = listener.EndReceive(asyncResult, ref groupEP);
+                        byte[] bytes = listener.Receive(ref groupEP);
 
                         var diaryEntry = SerializationUtils.FromByteArray<DiaryEntry>(bytes);
                         diary.AddEntry(diaryEntry);
