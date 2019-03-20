@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUDPUtils", "TestUDPUtil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsBattleServer", "TestUDPUtils\XsBattleServer\XsBattleServer.csproj", "{B207F1A6-E577-4D1E-9B4D-2521520B3067}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsBattleCommon", "XsBattleCommon\XsBattleCommon.csproj", "{AB511FF5-A620-44BE-9509-9E0D98AB00B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{B207F1A6-E577-4D1E-9B4D-2521520B3067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B207F1A6-E577-4D1E-9B4D-2521520B3067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B207F1A6-E577-4D1E-9B4D-2521520B3067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB511FF5-A620-44BE-9509-9E0D98AB00B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB511FF5-A620-44BE-9509-9E0D98AB00B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB511FF5-A620-44BE-9509-9E0D98AB00B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB511FF5-A620-44BE-9509-9E0D98AB00B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

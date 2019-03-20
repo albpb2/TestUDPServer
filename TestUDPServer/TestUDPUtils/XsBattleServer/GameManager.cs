@@ -1,4 +1,5 @@
 using System;
+using XsBattleCommon;
 using XsBattleServer.Model;
 
 namespace XsBattleServer
@@ -12,6 +13,12 @@ namespace XsBattleServer
         {
             _board = board ?? throw new ArgumentNullException(nameof(board));
             _locker = new Object();
+        }
+
+        public void MovePlayer(int playerId, Direction direction)
+        {
+            var playerCharacter = _board.GetPlayerCharacter(playerId);
+            MovePlayer(playerCharacter, direction);
         }
 
         public void MovePlayer(PlayerCharacter playerCharacter, Direction direction)

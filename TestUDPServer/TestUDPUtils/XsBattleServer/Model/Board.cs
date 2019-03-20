@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using XsBattleCommon;
 
 namespace XsBattleServer.Model
 {
@@ -10,11 +11,13 @@ namespace XsBattleServer.Model
         
         private Cell[,] _cells;
         private List<PlayerCharacter> _players;
+        private Dictionary<int, PlayerCharacter> _playersById;
         private Dictionary<Direction, Func<Cell, Cell>> _movementTargets;
 
         private Board()
         {
             _players = new List<PlayerCharacter>(MaxPlayers);
+            _playersById = new Dictionary<int, PlayerCharacter>();
             
             _movementTargets = new Dictionary<Direction, Func<Cell, Cell>>
             {
@@ -61,6 +64,7 @@ namespace XsBattleServer.Model
             }
             
             _players.Add(player);
+            _playersById.Add(player.PlayerId, player);
         }
 
         public bool IsCellFree(Cell cell)
@@ -82,5 +86,7 @@ namespace XsBattleServer.Model
                 && cell.X >= 0
                 && cell.X < HorizontalSize;
         }
+
+        public PlayerCharacter GetPlayerCharacter(int playerId) => _playersById[playerId];
     }
 }
