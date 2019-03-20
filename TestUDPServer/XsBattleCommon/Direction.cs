@@ -1,4 +1,4 @@
-namespace XsBattleServer.Model
+namespace XsBattleCommon
 {
     public enum Direction
     {
