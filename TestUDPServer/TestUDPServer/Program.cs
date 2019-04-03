@@ -9,12 +9,15 @@ namespace TestUDPServer
     class Program
     {
         private const int listenPort = 11000;
+
+        private static bool _endProcess = false;
     
         public static void Main()
         {
+            AppDomain.CurrentDomain.ProcessExit += AppDomainOnProcessExit;
             StartListener();
         }
-    
+
         private static void StartListener()
         {
             UdpClient listener = new UdpClient(listenPort);
@@ -25,7 +28,7 @@ namespace TestUDPServer
             
             try
             {
-                while (true)
+                while (!_endProcess)
                 {
                     Console.WriteLine("Waiting for broadcast");
                     
@@ -66,6 +69,11 @@ namespace TestUDPServer
             {
                 listener.Close();
             }
+        }
+
+        private static void AppDomainOnProcessExit(object sender, EventArgs e)
+        {
+            _endProcess = true;
         }
     }
 }
