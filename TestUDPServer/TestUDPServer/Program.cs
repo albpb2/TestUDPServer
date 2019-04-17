@@ -8,14 +8,24 @@ namespace TestUDPServer
 {
     class Program
     {
-        private const int listenPort = 11000;
+        private const int listenPort = 80;
 
         private static bool _endProcess = false;
     
         public static void Main()
         {
-            AppDomain.CurrentDomain.ProcessExit += AppDomainOnProcessExit;
-            StartListener();
+            try
+            {
+                Console.WriteLine("Starting");
+                AppDomain.CurrentDomain.ProcessExit += AppDomainOnProcessExit;
+                StartListener();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An exception occured");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
         }
 
         private static void StartListener()
